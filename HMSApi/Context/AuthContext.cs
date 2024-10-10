@@ -18,7 +18,6 @@ namespace HMSApi.Context
             string[] roleNames = { "Admin", "Doctor", "Nurse" };
             IdentityResult roleResult;
 
-            // Seed roles
             foreach (var roleName in roleNames)
             {
                 var roleExist = await roleManager.RoleExistsAsync(roleName);
@@ -28,7 +27,6 @@ namespace HMSApi.Context
                 }
             }
 
-            // Seed a default admin user
             var adminUser = new User { UserName = "admin", Email = "admin@example.com", Role = "Admin" };
 
             var existingAdmin = await userManager.FindByEmailAsync(adminUser.Email);
